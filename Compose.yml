@@ -1,23 +1,23 @@
-version: '3.8' #Version que se utiliza
+version: '3.8'
 
-services: #Declara servicios de la aplicacion
-  backend: #Definimos el Backend
-    build: #Instrucciones para que se construya
-      context: ../Arias-Santillan-Huerga-Backend-main #Especifica la ubicación donde se encuentran los archivos fuente para construir la imagen
-      dockerfile: Dockerfile #Utiliza el archivo docker con el nombre "Dockerfile"
+services: 
+  backend: 
+    build: 
+      context: ../Arias-Santillan-Huerga-Backend-main 
+      dockerfile: Dockerfile 
     ports: 
-      - "3000:3000" #Los puertos que se relacionan el primero es el del host que puede ser cualquiera, el segundo es el que esta configurado en el Dockerfile del Backend
+      - "3000:3000" 
     networks: 
-      - network #Red a la que pertenece
+      - network 
 
-  frontend: #Configuramos el Frontend
-    build: #Instrucciones para que se construya
-      context: ../Arias-Huerga-Santillan-Frontendd-main #Especifica la ubicación donde se encuentran los archivos fuente para construir la imagen
-      dockerfile: Dockerfile #Utiliza el archivo docker con el nombre "Dockerfile"
+  frontend: 
+    build: 
+      context: ../Arias-Huerga-Santillan-Frontendd-main 
+      dockerfile: Dockerfile 
     ports: 
-      - "8080:80" #Los puertos que se relacionan el primero es el del host que puede ser cualquiera, el segundo es el que esta configurado en el Dockerfile del Frontend
+      - "8080:80" 
     networks: 
-      - network #Red a la que pertenece
-    depends_on: backend #Esto implica que depende del Backend, es decir que solo va a funcionar una vez que el Backend se haya iniciado, para poder evitar conflictos con peticiones
+      - network 
+    depends_on: backend 
 
-networks: network #Declaramos la red que va a contener al Backend y al Frontend, por defecto es de tipo bridge
+networks: network 
