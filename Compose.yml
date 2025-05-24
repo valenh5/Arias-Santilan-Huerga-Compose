@@ -1,23 +1,27 @@
-version: '3.8'
-
-services: 
+version: '3.8' 
+services:
   backend: 
     build: 
       context: ../Arias-Santillan-Huerga-Backend-main 
       dockerfile: Dockerfile 
     ports: 
-      - "3000:3000" 
+      - "3000:3000"
     networks: 
       - network 
+    env_file:
+      - .env  
 
   frontend: 
     build: 
       context: ../Arias-Huerga-Santillan-Frontendd-main 
-      dockerfile: Dockerfile 
-    ports: 
-      - "8080:80" 
-    networks: 
-      - network 
-    depends_on: backend 
+      dockerfile: Dockerfile
+    ports:
+      - "8080:80"
+    networks:
+      - network                                 
+    depends_on:
+      - backend 
 
-networks: network 
+networks: 
+  network:
+    driver: bridge
